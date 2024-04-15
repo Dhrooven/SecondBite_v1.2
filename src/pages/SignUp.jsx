@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
 import { ReactComponent as YourSvg } from '../assets/secondbite-concept-illustration 1.svg'
 import './SignUp.css'
 import { ReactComponent as LogoSvg } from '../assets/logo.svg'
-import SignUp2 from './signup2.js'
+// import SignUp2 from './signup2.js'
+import { useNavigate } from 'react-router-dom'
+// import ErrorPage from './ErrorPage.js'
+
 function SignUp() {
-  const [showSignUp2, setShowSignUp2] = useState(false)
+  // const [showSignUp2, setShowSignUp2] = useState(false)
+  const navigate = useNavigate();
   const handleClick = () => {
-    setShowSignUp2(true)
+    navigate('/SignUp2')
   }
+
+
   return (
     <div className='signup-container'>
       <div className='svg-container'>
@@ -63,7 +68,6 @@ function SignUp() {
                 Subscribe to our newsletter
               </label>
             </div>
-            {showSignUp2 && <SignUp2 />}
             <button
               type='button'
               className='register-button'
