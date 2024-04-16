@@ -3,9 +3,6 @@ import { ReactComponent as YourSvg } from '../assets/secondbite-concept-illustra
 import './SignUp2.css'
 import { ReactComponent as LogoSvg } from '../assets/logo.svg'
 function SignUp() {
-  // const handleClick = () => {
-  // <SignUp2 />
-  // }
   return (
     <div className='signup-container'>
       <div className='svg-container'>
