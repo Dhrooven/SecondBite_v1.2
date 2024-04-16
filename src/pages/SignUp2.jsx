@@ -1,8 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ReactComponent as YourSvg } from '../assets/secondbite-concept-illustration 1.svg'
 import './SignUp2.css'
 import { ReactComponent as LogoSvg } from '../assets/logo.svg'
+
 function SignUp() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [selectedState, setSelectedState] = useState('')
+  const states = [
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+  ]
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen)
+  }
+
+  const selectState = (state) => {
+    setSelectedState(state)
+    setIsOpen(false)
+  }
+
   return (
     <div className='signup-container'>
       <div className='svg-container'>
@@ -45,17 +88,20 @@ function SignUp() {
               />
             </div>
             <div className='input-group'>
-              <button onclick='toggleDropdown()' class='dropbtn'>
-                State
+              <button onClick={toggleDropdown} className='dropbtn'>
+                {selectedState || 'State'}
               </button>
-              <div className="dropdown">
-                <ul>
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                </ul>
-              </div>
+              {isOpen && (
+                <div className='dropdown'>
+                  <ul>
+                    {states.map((state) => (
+                      <li key={state} onClick={() => selectState(state)}>
+                        {state}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
             <div className='input-group'>
               <span className='input-icon'>

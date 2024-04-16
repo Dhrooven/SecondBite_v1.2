@@ -1,23 +1,66 @@
+.dropbtn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #e2e2e2;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 1rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100, 'YTLC' 500;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  align-items: left;
+  justify-content: left;
+}
+
+.dropdown ul {
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 200px;
+  max-height: 200px; /* Adjust the height as needed */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 1rem;
+  overflow-y: auto; /* Add scroll for vertical overflow */
+}
+
+.dropdown ul li {
+  font-family: 'Nunito Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+    'wdth' 100,
+    'YTLC' 500;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown ul li:hover {
+  background-color: #e2e2e2;
+}
 .signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-.dropdown {
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  li {
-    padding: 8px 12px;
-  }
-
-  li:hover {
-    background-color: rgba(0, 0, 0, 0.14);
-    cursor: pointer;
-  }
 }
 .signup-content {
   display: flex;
@@ -92,7 +135,7 @@
   border-radius: 1rem;
   font-family: 'Nunito Sans', sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: normal;
   font-style: normal;
   font-variation-settings:
     'wdth' 100,
