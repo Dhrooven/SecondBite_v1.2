@@ -58,6 +58,7 @@
   align-items: center;
   margin-bottom: 1rem;
   border-radius: 10;
+  position: relative
 }
 
 .input-icon {
@@ -78,7 +79,7 @@
   border-radius: 1rem;
   font-family: 'Nunito Sans', sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: normal;
   font-style: normal;
   font-variation-settings:
     'wdth' 100,
@@ -132,4 +133,11 @@
   color: #fff;
   background-color: #ff5757;
   border-color: #ff5757;
+}
+
+.element-on-top {
+  position: absolute; /* Position the element absolutely */
+  left: 16rem; /* Adjust the left position as needed */
+  z-index: 1; /* Ensure the element is on top of the input field */
+  color: #ff0000;
 }
