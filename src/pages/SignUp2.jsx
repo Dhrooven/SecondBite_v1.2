@@ -2,6 +2,15 @@ import React, { useState } from 'react'
 import { ReactComponent as YourSvg } from '../assets/secondbite-concept-illustration 1.svg'
 import './SignUp2.css'
 import { ReactComponent as LogoSvg } from '../assets/logo.svg'
+// import { useNavigate } from 'react-router-dom'
+import { useForm, FormProvider } from 'react-hook-form'
+import { Input } from '../components/Input'
+import {
+  address_validation,
+  pincode_validation,
+  email_validation,
+  phone_validation,
+} from '../utils/inputValidations'
 
 function SignUp() {
   const [isOpen, setIsOpen] = useState(false)
@@ -46,94 +55,68 @@ function SignUp() {
     setIsOpen(false)
   }
 
+  const methods = useForm()
+  // const navigate = useNavigate()
+  const onSubmit = methods.handleSubmit((data) => {
+    console.log(data)
+    // navigate('/SignUp2')
+  })
+
   return (
-    <div className='signup-container'>
-      <div className='svg-container'>
-        <YourSvg />
-      </div>
-      <div>
-        <h2 className='logo_text'>SecondBite</h2>
-      </div>
-      <div className='signup-content'>
-        <div className='form-container'>
-          <div className='form-wrapper'>
-            <div className='icon-container'>
-              <LogoSvg />
-            </div>
-            <h1 className='form-title'>Sign up</h1>
-            <div className='input-group'>
-              <span className='input-icon'>
-                <i className='fas fa-user'></i>
-              </span>
-              <input type='text' className='input-field' placeholder='Email' />
-            </div>
-            <div className='input-group'>
-              <span className='input-icon'>
-                <i className='fas fa-lock'></i>
-              </span>
-              <input
-                type='text'
-                className='input-field'
-                placeholder='Contact'
-              />
-            </div>
-            <div className='input-group'>
-              <span className='input-icon'>
-                <i className='fas fa-key'></i>
-              </span>
-              <input
-                type='text'
-                className='input-field'
-                placeholder='Address'
-              />
-            </div>
-            <div className='input-group'>
-              <button onClick={toggleDropdown} className='dropbtn'>
-                {selectedState || 'State'}
-              </button>
-              {isOpen && (
-                <div className='dropdown'>
-                  <ul>
-                    {states.map((state) => (
-                      <li key={state} onClick={() => selectState(state)}>
-                        {state}
-                      </li>
-                    ))}
-                  </ul>
+    <FormProvider {...methods}>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        noValidate
+        autoComplete='off'
+        className='container'
+      >
+        <div className='signup-container'>
+          <div className='svg-container'>
+            <YourSvg />
+          </div>
+          <div>
+            <h2 className='logo_text'>SecondBite</h2>
+          </div>
+          <div className='signup-content'>
+            <div className='form-container'>
+              <div className='form-wrapper'>
+                <div className='icon-container'>
+                  <LogoSvg />
                 </div>
-              )}
+                <h1 className='form-title'>Sign up</h1>
+                <Input {...email_validation} />
+                <Input {...phone_validation} />
+                <Input {...address_validation} />
+                <div className='input-group'>
+                  <button onClick={toggleDropdown} className='dropbtn'>
+                    {selectedState || 'State'}
+                  </button>
+                  {isOpen && (
+                    <div className='dropdown'>
+                      <ul>
+                        {states.map((state) => (
+                          <li key={state} onClick={() => selectState(state)}>
+                            {state}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <Input {...pincode_validation} />
+                <button
+                  type='button'
+                  className='register-button'
+                  onClick={onSubmit}
+                >
+                  NEXT
+                </button>
+              </div>
             </div>
-            <div className='input-group'>
-              <span className='input-icon'>
-                <i className='fas fa-key'></i>
-              </span>
-              <input
-                type='text'
-                className='input-field'
-                placeholder='Pincode'
-              />
-            </div>
-            <div className='checkbox-group'>
-              <input
-                type='checkbox'
-                className='checkbox-input'
-                id='newsletter-checkbox'
-              />
-              <label htmlFor='newsletter-checkbox' className='checkbox-label'>
-                Subscribe to our newsletter
-              </label>
-            </div>
-            <button
-              type='button'
-              className='register-button'
-              /* onClick={handleClick} */
-            >
-              NEXT
-            </button>
           </div>
         </div>
-      </div>
-    </div>
+      </form>
+    </FormProvider>
   )
 }
 

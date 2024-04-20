@@ -4,6 +4,14 @@ import './SignUp.css'
 import { ReactComponent as LogoSvg } from '../assets/logo.svg'
 import { Input } from '../components/Input'
 import { useNavigate } from 'react-router-dom'
+import {
+  name_validation,
+  // desc_validation,
+  // email_validation,
+  // num_validation,
+  password_validation,
+  repeat_password_validation,
+} from '../utils/inputValidations'
 // import ErrorPage from './ErrorPage.js'
 
 function SignUp() {
@@ -13,12 +21,12 @@ function SignUp() {
     console.log(data)
     navigate('/SignUp2')
   })
-
   return (
     <FormProvider {...methods}>
       <form
         onSubmit={(e) => e.preventDefault()}
         noValidate
+        autoComplete= "off"
         className='container'
       >
         <div className='signup-container'>
@@ -35,13 +43,9 @@ function SignUp() {
                   <LogoSvg />
                 </div>
                 <h1 className='form-title'>Sign up</h1>
-                <Input type='text' id='username' placeholder='Username' />
-                <Input type='password' id='password' placeholder='Password' />
-                <Input
-                  type='password'
-                  id='Repeat_password'
-                  placeholder='Repeat Password'
-                />
+                <Input {...name_validation} />
+                <Input {...password_validation} />
+                <Input {...repeat_password_validation} />
                 <button
                   type='button'
                   className='register-button'
